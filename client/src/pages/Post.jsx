@@ -27,13 +27,16 @@ class Dashboard extends Component{
     }
 
     getPost() {
-        axios.get('http://localhost:1337/api/liste')
+        // axios.get('http://localhost:1337/api/liste')
+        axios.get('https://api.imgflip.com/get_memes')
+
           .then(res => {
-            const posts = res.data.post;
+            const posts = res.data.data.memes;
+            console.log(posts)
             this.setState({ 
               posts 
              });
-          })
+        })
     }
 
     async getUser(){
@@ -70,14 +73,20 @@ class Dashboard extends Component{
         <div className='laliste'>
             <Header></Header>
             <div>
+            <div> {users}</div>
                 <h1>post</h1>
 
                  <div>
                     {posts.map(post => (
-                        <p key={post._id}>{post.contenu}</p>
+                        <div key={post.id}>
+                            <img src={post.url} alt="" />
+                            <p >{post.name}</p>
+                        </div>
                     ))}
+                    {/* {posts.map(post => (
+                        <p key={post._id}>{post.contenu}</p>
+                    ))} */}
                 </div>
-                <div> {users}</div>
             </div>
 
         </div>
