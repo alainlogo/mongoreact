@@ -19,9 +19,7 @@ const bcrypt = require('bcryptjs')
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://alilogo6:2699_Cozy@cluster0.ky8zdni.mongodb.net/testauth?retryWrites=true&w=majority',
- { autoIndex: false, useNewUrlParser: true,  useUnifiedTopology: true } ,console.log("mongo tourne")
-)
+mongoose.connect('ajouter parametres mongo')
 
 app.post('/api/register', async (req, res) => {
 	console.log(req.body)
